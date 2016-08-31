@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Rezizer</title>
+    <meta name="description" content="Realtime image manipulator proxy">
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/webfonts.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+</head>
+
+<body >
+    <div class="contents">
+        <header id="header">
+            <div class="container">
+                <div class="main" style="opacity: 100;">
+                    <div class="logo"></div>
+                    <div class="banner">real time image manipulator proxy.</div>
+                    <nav>
+                    <div class="container">
+                        <ul>
+                            <li class="ib-middle ms"><a href="https://github.com/zanaca/rezizer/wiki">DOCUMENTATION</a></li>
+                            <li class="ib-middle ms"><a class="github-button" href="https://github.com/zanaca/rezizer" data-icon="octicon-star" data-style="mega" data-count-href="/zanaca/rezizer/stargazers" data-count-api="/repos/zanaca/rezizer#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star zanaca/rezizer on GitHub">Star</a></li>
+                            <li class="ib-middle ms"><a href="https://github.com/zanaca/rezizer">REPOSITORY</a></li>
+                        </ul>
+                        <i id="header-arrow" class="fa fa-angle-down"></i>
+                    </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="main-window">
+            <div class="container">
+                <section class="first-block">
+                    <p>
+                        <strong>Rezizer</strong> works like a reverse proxy on your network. It will automagicly grab the image you informed and process it on the fly, giving you smart thumnbails, size limited output, easy lazy loading content and the hability to create tile content, like you see in Google Maps as easy as paste an URL.
+                    </p>
+
+                    <p class="spacing">
+                        It can detect faces, get the most import area by entropy, extract the color palette in JSON, turn it up side down, add colored bars to distorted images, etc. It's up to your necessity. Oh, did I say it's open source?!
+                    </p>
+
+                    <p class="spacing">
+                        It uses `libvips` to do the nasty job of transform the content, fastly. Lower the size, faster the user will get your page.
+                    </p>
+
+                    <a href="https://github.com/zanaca/rezizer/wiki/Getting-started" class="btn btn-dark center">
+                        <span>LEARN MORE »</span>
+                    </a>
+                </section>
+            </div>
+
+            <div class="container skew-container">
+                <section class="second-block skew-content">
+                    <h2 class="center spacing">
+                        Do you like maps?
+                    </h2>
+                    <div id="map"></div>
+                    <p class="spacing">
+                        That map tiles were gerenrated in Rezizer. It was as hard as typing:<br>
+                        <strong>http://rezizer.yourdomain.com/map/http://yourdomain.com/huge/image.jpg</strong>
+                    </p>
+
+                    <p class="spacing">
+                        It is a simple way to deliver a large image file, by delivering small tiles and giving more detail when required.
+                    </p>
+                </section>
+                <div class="skew bg-second-block"></div>
+            </div>
+
+
+            <footer>
+                <div class="container">
+                    <a style="float:right" href="https://github.com/zanaca/rezizer/blob/master/LICENSE">
+                        <img src="https://img.shields.io/badge/license-MIT-blue.svg">
+                    </a>
+
+                    <div class="left">
+                        Image credit: <a href="https://www.flickr.com/photos/christianhaugen/">Christian Haugen</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-scrollspy.js"></script>
+        <script type="text/javascript" src="js/iscroll.js"></script>
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83444613-1', 'auto');
+  ga('send', 'pageview');
+
+        </script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <script type="text/javascript" src="js/lz.js"></script>
+        <script type="text/javascript">
+            var map = L.map('map').setView(new L.LatLng(0,0), 0);
+            L.tileLayer.rezizer('images/warther/', {
+                width: 16384,
+                height: 4597,
+                tolerance: .46,
+                attribution: '<a href="http://tomfear.com">Tom Fear</a> - <a href="http://www.rezizer.com">Rezizer</a> mapping',
+            }).addTo(map);
+        </script>
+
+</body>
+
+</html>
